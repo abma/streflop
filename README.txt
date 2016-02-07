@@ -1,5 +1,5 @@
 STandalone REproducible FLOating-Point library
-Version 0.3, august 2006.
+Version 0.2, june 2006.
 Nicolas Brodu. See also the acknowledgments below.
 
 
@@ -180,8 +180,6 @@ BUGS and discrepancies:
 
 Acknowledgments:
 
-- Thanks to Tobi Vollebregt for feedback, Win32 reports, testing, and patches, especially the FP rounding mode correction.
-
 - This code heavily relies on GNU Libm, itself depending on Sun's netlib fplibm, GNU MP, and IBM's multi-precision library.
 
 - This code uses the SoftFloat library for the software floating-point implementation.
@@ -190,15 +188,7 @@ Acknowledgments:
 
 - Please read the history and copyright information in the accompanying README.txt files in the libm and softfloat directories, as well as the LGPL.txt file in this directory.
 
-
-
-History:
-
-- Version 0.3: Bug correction, especially about the x87 rounding modes. Added ldexp functions a corrected a fmod typo.
-
-- Version 0.2: Compatibility with <math.h>: Added the xxxf and xxxl aliases for Simple and Extended versions of the xxx Double function.
-
-- Version 0.1: First public release.
+- Thanks to Tobi Vollebregt for feedback, Win32 reports, and patches.
 
 
 
@@ -210,3 +200,6 @@ How you can help:
 
 - Help extend the GNU libm first, and only then import that work in this project.
 
+
+
+Nicolas Brodu, june 2006.

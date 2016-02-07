@@ -18,7 +18,7 @@
 static char rcsid[] = "$NetBSD: s_nextafterf.c,v 1.4f 1995/05/10 20:48:01 jtc Exp $";
 #endif
 
-#include "math.h"
+#include "SMath.h"
 #include "math_private.h"
 #include "../streflop_libm_bridge.h"
 
@@ -62,8 +62,10 @@ namespace streflop_libm {
 	hy = hx&0x7f800000;
 	if(hy>=0x7f800000) {
 	  x = x+x;	/* overflow  */
+#if FLT_EVAL_METHOD != 0
 	  if (FLT_EVAL_METHOD != 0)
 	    asm ("" : "=m"(x) : "m"(x));
+#endif
 	  return x;	/* overflow  */
 	}
 	if(hy<0x00800000) {		/* underflow */

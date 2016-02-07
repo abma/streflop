@@ -112,16 +112,11 @@ inline long long MIN(long long x, long long y) {return x<y ? x : y;}
 // Compensate lack of Math.h
 enum
 {
-    FP_NAN,
-# define FP_NAN FP_NAN
-    FP_INFINITE,
-# define FP_INFINITE FP_INFINITE
-    FP_ZERO,
-# define FP_ZERO FP_ZERO
-    FP_SUBNORMAL,
-# define FP_SUBNORMAL FP_SUBNORMAL
-    FP_NORMAL
-# define FP_NORMAL FP_NORMAL
+    FP_NAN = 0,
+    FP_INFINITE = 1,
+    FP_ZERO = 2,
+    FP_SUBNORMAL = 3,
+    FP_NORMAL = 4
 };
 
 #ifdef LIBM_COMPILING_FLT32
@@ -430,6 +425,13 @@ do {                                \
   (d) = f;                     \
 } while (0)
 
+#endif
+
+
+#ifdef _MSC_VER
+// Even if MSVC != STDC, we still need to define it,
+// otherwise MSVC chokes on the K&R style function headers.
+# define __STDC__
 #endif
 
 

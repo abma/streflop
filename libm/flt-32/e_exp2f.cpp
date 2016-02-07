@@ -32,7 +32,7 @@
 #include "../streflop_libm_bridge.h"
 #include "../streflop_libm_bridge.h"
 #include "ieee754.h"
-#include "math.h"
+#include "SMath.h"
 #include "../streflop_libm_bridge.h"
 #include "../streflop_libm_bridge.h"
 #include "math_private.h"
@@ -56,7 +56,7 @@ __ieee754_exp2f (Simple x)
       int tval, unsafe;
       Simple rx, x22, result;
       union ieee754_float ex2_u, scale_u;
-      fenv_t oldenv;
+      fpenv_t oldenv;
 
       feholdexcept (&oldenv);
 #ifdef FE_TONEAREST

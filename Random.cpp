@@ -12,7 +12,6 @@
 // Include time(0) function to get a seed based on system time
 #include <time.h>
 #include <iostream>
-using namespace std;
 #include "streflop.h"
 
 // Include endian-specific code
@@ -918,6 +917,7 @@ template<> Simple NRandom(Simple *secondary, RandomState& state) {
     return NRandom_Generic<Simple>(secondary,state);
 }
 
+/*
 template<> Double NRandom(Double *secondary, RandomState& state) {
     return NRandom_Generic<Double>(secondary,state);
 }
@@ -926,6 +926,7 @@ template<> Extended NRandom(Extended *secondary, RandomState& state) {
     return NRandom_Generic<Extended>(secondary,state);
 }
 #endif
+*/
 
 // May save one mul
 template<typename FloatType> static inline FloatType NRandom_Generic(FloatType mean, FloatType std_dev, FloatType *secondary, RandomState& state) {
@@ -952,6 +953,7 @@ template<> Simple NRandom(Simple mean, Simple std_dev, Simple *secondary, Random
     return NRandom_Generic<Simple>(mean, std_dev, secondary,state);
 }
 
+/*
 template<> Double NRandom(Double mean, Double std_dev, Double *secondary, RandomState& state) {
     return NRandom_Generic<Double>(mean, std_dev, secondary,state);
 }
@@ -960,7 +962,7 @@ template<> Extended NRandom(Extended mean, Extended std_dev, Extended *secondary
     return NRandom_Generic<Extended>(mean, std_dev, secondary,state);
 }
 #endif
-
+*/
 
 SizedUnsignedInteger<32>::Type RandomInit(RandomState& state) {
     return RandomInit(SizedUnsignedInteger<32>::Type(time(0)));

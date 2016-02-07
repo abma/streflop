@@ -12,6 +12,17 @@
 #ifndef STREFLOP_H
 #define STREFLOP_H
 
+// protect against bad defines
+#if   defined(STREFLOP_SSE) && defined(STREFLOP_X87)
+#error You have to define exactly one of STREFLOP_SSE STREFLOP_X87 STREFLOP_SOFT, but you defined both STREFLOP_SSE and STREFLOP_X87
+#elif defined(STREFLOP_SSE) && defined(STREFLOP_SOFT)
+#error You have to define exactly one of STREFLOP_SSE STREFLOP_X87 STREFLOP_SOFT, but you defined both STREFLOP_SSE and STREFLOP_SOFT
+#elif defined(STREFLOP_X87) && defined(STREFLOP_SOFT)
+#error You have to define exactly one of STREFLOP_SSE STREFLOP_X87 STREFLOP_SOFT, but you defined both STREFLOP_X87 and STREFLOP_SOFT
+#elif !defined(STREFLOP_SSE) && !defined(STREFLOP_X87) && !defined(STREFLOP_SOFT)
+#error You have to define exactly one of STREFLOP_SSE STREFLOP_X87 STREFLOP_SOFT, but you defined none
+#endif
+
 // First, define the numerical types
 namespace streflop {
 
@@ -57,11 +68,12 @@ namespace streflop {
 
 }
 
+
 // Include the FPU settings file, so the user can initialize the library
 #include "FPUSettings.h"
 
 // Now that types are defined, include the Math.h file for the prototypes
-#include "Math.h"
+#include "SMath.h"
 
 // And now that math functions are defined, include the random numbers
 #include "Random.h"
